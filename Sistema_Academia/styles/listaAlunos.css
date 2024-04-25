@@ -1,12 +1,10 @@
 @import url("importGeral.css");
 
-
-
 .alunos{
     height: 35vh;
     width: 50px;
+
     background-color: var(--preto-padrao);
     box-shadow: 1px 1px 5px black inset;
     color: #fff;
 }
-
