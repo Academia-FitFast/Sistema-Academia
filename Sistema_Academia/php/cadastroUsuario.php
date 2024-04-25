@@ -2,7 +2,8 @@
 require 'connectionSQL.php';
 
 // Cadastro Aluno
-function cadastrarAluno(){
+function cadastrarAluno($conn){
+
     // ATRIBUTOS
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -27,7 +28,7 @@ function cadastrarAluno(){
 }
 
 // Cadastro Funcionário
-function cadastrarFuncionario(){
+function cadastrarFuncionario($conn){
     // ATRIBUTOS
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -55,12 +56,12 @@ function cadastrarFuncionario(){
     }
 }
 
-// Verifica se o form não está vazio
+// Verifica se existe um REQUEST
 if(!empty($_POST)){
-    if (isset($_POST['form-funcionario'])){
-        cadastrarFuncionario();
-    } else if (isset($_POST['form-aluno'])){
-        cadastrarAluno();
+    if ($_POST['form-type'] === 'aluno') {
+        cadastrarAluno($conn);
+    } elseif ($_POST['form-type'] === 'funcionario') {
+        cadastrarFuncionario($conn);
     }
 }
 

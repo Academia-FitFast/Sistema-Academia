@@ -22,11 +22,13 @@
                 <input type="text" placeholder="Endereço" name="endereco"/>
                 <input type="text" placeholder="Salário" name="salario"/>
                 <input type="text" placeholder="Cargo" name="cargo"/>
+                <br>
+                <input type="hidden" name="form-type" value="funcionario">
                 <button type="submit">Cadastrar Funcionário</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="../php/cadastroUsuario.php" method="POST" name="form-aluno">
+            <form action="../php/cadastroUsuario.php" method="POST">
                 <input type="name" placeholder="Nome" name="nome"/>
                 <input type="email" placeholder="Email" name= "email"/>
                 <input type="text" placeholder="CPF" name="cpf" id="cpf"/>
@@ -35,6 +37,7 @@
                 <input type="text" placeholder="Telefone" name="telefone" id="telefone"/>
                 <input type="text" placeholder="Endereço" name="endereco"/>
                 <br>
+                <input type="hidden" name="form-type" value="aluno">
                 <button type="submit">Cadastrar Cliente</button>
             </form>
         </div>
