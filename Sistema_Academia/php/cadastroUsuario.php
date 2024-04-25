@@ -1,6 +1,9 @@
 <?php
 require 'connectionSQL.php';
 
+// Início sessão
+session_start();
+
 // Cadastro Aluno
 function cadastrarAluno($conn){
 
@@ -21,10 +24,14 @@ function cadastrarAluno($conn){
 
     // Verifica se a QUERY está certa
     if ($conn->query($sql)){
-        echo "Aluno cadastrado!";
+        $_SESSION['cadastro-status'] = true;
     } else {
-        echo "Aluno não cadastrado!";
+        $_SESSION['cadastro-status'] = false;
     }
+
+    // Volta para a página
+    header('Location: ../pages/listaUsuarios.html');
+    exit;
 }
 
 // Cadastro Funcionário
@@ -50,10 +57,14 @@ function cadastrarFuncionario($conn){
 
     // Verifica se a QUERY está certa
     if ($conn->query($sql)){
-        echo "Funcionário cadastrado!";
+        $_SESSION['cadastro-status'] = true;
     } else {
-        echo "Funcionário não cadastrado!";
+        $_SESSION['cadastro-status'] = false;
     }
+
+    // Volta para a página
+    header('Location: ../pages/listaUsuarios.html');
+    exit;
 }
 
 // Verifica se existe um REQUEST
