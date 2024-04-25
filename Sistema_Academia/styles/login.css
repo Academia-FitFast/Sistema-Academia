@@ -73,3 +73,8 @@ body{
 .signup-link a {
     text-decoration: underline;
 }
+
+.body-login {
+    background: url('../images/image-bg-login.png') no-repeat;
+    background-size: cover;
+}
