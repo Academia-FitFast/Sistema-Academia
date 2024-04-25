@@ -2,7 +2,6 @@
 @import url("index.css");
 @import url("cadastroUsuarios.css");
 @import url("login.css");
-@import url("listaAlunos.css");
 
 :root{
     --cor-primaria:#dadada;
