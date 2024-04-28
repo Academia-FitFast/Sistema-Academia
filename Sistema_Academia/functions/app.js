@@ -1,5 +1,5 @@
 function trocarListaUsuarios() {
-    document.getElementById("telaPrincipal").src="listaUsuarios.html ";
+    document.getElementById("telaPrincipal").src="listaUsuarios.html";
 }   
 
 function trocarFinanceiro() {
