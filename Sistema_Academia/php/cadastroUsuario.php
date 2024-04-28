@@ -4,6 +4,15 @@ require 'connectionSQL.php';
 // Início sessão
 session_start();
 
+// Verifica se existe um REQUEST
+if(!empty($_POST)){
+    if ($_POST['form-type'] === 'aluno') {
+        cadastrarAluno($conn);
+    } elseif ($_POST['form-type'] === 'funcionario') {
+        cadastrarFuncionario($conn);
+    }
+}
+
 // Cadastro Aluno
 function cadastrarAluno($conn){
 
@@ -24,14 +33,10 @@ function cadastrarAluno($conn){
 
     // Verifica se a QUERY está certa
     if ($conn->query($sql)){
-        $_SESSION['cadastro-status'] = true;
+        $_SESSION['cadastro_status'] = "aaaaaaaa";
     } else {
-        $_SESSION['cadastro-status'] = false;
+        $_SESSION['cadastro_status'] = "bbbbbb";
     }
-
-    // Volta para a página
-    header('Location: ../pages/listaUsuarios.html');
-    exit;
 }
 
 // Cadastro Funcionário
@@ -57,24 +62,15 @@ function cadastrarFuncionario($conn){
 
     // Verifica se a QUERY está certa
     if ($conn->query($sql)){
-        $_SESSION['cadastro-status'] = true;
+        $_SESSION['cadastro_status'] = true;
     } else {
-        $_SESSION['cadastro-status'] = false;
-    }
-
-    // Volta para a página
-    header('Location: ../pages/listaUsuarios.html');
-    exit;
-}
-
-// Verifica se existe um REQUEST
-if(!empty($_POST)){
-    if ($_POST['form-type'] === 'aluno') {
-        cadastrarAluno($conn);
-    } elseif ($_POST['form-type'] === 'funcionario') {
-        cadastrarFuncionario($conn);
+        $_SESSION['cadastro_status'] = false;
     }
 }
 
 // Fecha conexão
 $conn->close();
+
+// Volta para a página
+header('Location: ../pages/listaUsuarios.php');
+exit;

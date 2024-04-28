@@ -12,34 +12,36 @@
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="../php/cadastroUsuario.php" method="POST" class="form-cadastro">
-                <input type="name" placeholder="Nome" name="nome"/>
-                <input type="email" placeholder="Email" name="email"/>
-                <input type="text" placeholder="CPF" name="cpf" id="cpf"/>
-                <input type="date" placeholder="Data de Nascimento" name="data-nascimento"/>
+                <input type="name" placeholder="Nome" name="nome" required/>
+                <input type="email" placeholder="Email" name="email" required/>
+                <input type="text" placeholder="CPF" name="cpf" class="mask-cpf" required/>
+                <input type="date" placeholder="Data de Nascimento" name="data-nascimento" required/>
                 <input type="text" placeholder="Idade" name="idade">
-                <input type="text" placeholder="Telefone" name="telefone" id="telefone">
-                <input type="text" placeholder="Endereço" name="endereco"/>
-                <input type="text" placeholder="Salário" name="salario"/>
-                <input type="text" placeholder="Cargo" name="cargo"/>
+                <input type="text" placeholder="Telefone" name="telefone" class="mask-fone" required>
+                <input type="text" placeholder="Endereço" name="endereco" required/>
+                <input type="text" placeholder="Salário" name="salario" required/>
+                <input type="text" placeholder="Cargo" name="cargo" required/>
+
                 <br>
                 <input type="hidden" name="form-type" value="funcionario">
-                <button id="botao-cadastro" type="button">Cadastrar Funcionário</button>
-                <p id="info-cadastro"></p>
+                <button class="botao-cadastro" type="submit">Cadastrar Funcionário</button>
+                <p class="info-cadastro"></p>
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form action="../php/cadastroUsuario.php" method="POST" class="form-cadastro">
-                <input type="name" placeholder="Nome" name="nome"/>
-                <input type="email" placeholder="Email" name= "email"/>
-                <input type="text" placeholder="CPF" name="cpf" id="cpf"/>
-                <input type="date" placeholder="Data de Nascimento" name="data-nascimento"/>
+                <input type="name" placeholder="Nome" name="nome" required/>
+                <input type="email" placeholder="Email" name= "email" required/>
+                <input type="text" placeholder="CPF" name="cpf" class="mask-cpf" required/>
+                <input type="date" placeholder="Data de Nascimento" name="data-nascimento" required/>
                 <input type="text" placeholder="Idade" name="idade">
-                <input type="text" placeholder="Telefone" name="telefone" id="telefone"/>
-                <input type="text" placeholder="Endereço" name="endereco"/>
+                <input type="text" placeholder="Telefone" name="telefone" class="mask-fone" required/>
+                <input type="text" placeholder="Endereço" name="endereco" required/>
+                <input type="hidden" id="cadastroStatus" value="">
                 <br>
                 <input type="hidden" name="form-type" value="aluno">
-                <button id="botao-cadastro" type="button">Cadastrar Aluno</button>
-                <p id="info-cadastro"></p>
+                <button class="botao-cadastro" type="submit">Cadastrar Cliente</button>
+                <p class="info-cadastro"></p>
             </form>
         </div>
         <div class="overlay-container">
