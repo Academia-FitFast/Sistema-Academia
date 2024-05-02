@@ -17,28 +17,47 @@ signInButton.addEventListener('click', () => {
 	});
 });
 
-botoesCadastro.forEach(botao => {
-    botao.addEventListener('click', () => {
-        // Verifica o valor da variável de sessão
-        var cadastroStatus = document.getElementById('cadastroStatus').value;
-        console.log(cadastroStatus);
+// Função para obter parâmetros da URL
+function obterParametroURL(nomeParametro) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.has(nomeParametro) ? urlParams.get(nomeParametro) : null;
+}
 
-        // Exibe uma mensagem correspondente com base no valor da variável de sessão
-        if (cadastroStatus) {
-            document.querySelectorAll(".info-cadastro").forEach(info => {
-                info.innerText = "Cadastrado!";
-                info.style.color = "green";
-            });
-        } else {
-            document.querySelectorAll(".info-cadastro").forEach(info => {
-                info.innerText = "Erro ao cadastrar!";
-                info.style.color = "red";
-            });
-        }
-    });
+// Verifica o status do cadastro assim que a página é carregada
+document.addEventListener('DOMContentLoaded', function() {
+    // Obter parâmetro 'status' da URL
+    var cadastroStatus = obterParametroURL('status');
+    var cpfCadastro = obterParametroURL('cpf_cadastrado');
+
+    // Exibir mensagem com base no status do cadastro
+    if (cadastroStatus === 'sucess') {
+        document.querySelectorAll(".info-cadastro").forEach(info => {
+            info.innerText = "Cadastrado!";
+            info.style.color = "green";
+        });
+    
+    // CPF cadastrado
+    } else if (cadastroStatus === 'error' && cpfCadastro === 'true'){
+        document.querySelectorAll(".info-cadastro").forEach(info => {
+            info.innerText = "CPF já cadastrado!";
+            info.style.color = "red";
+        });
+
+    // Erro algum campo errado
+    } else if (cadastroStatus === 'error') {
+        document.querySelectorAll(".info-cadastro").forEach(info => {
+            info.innerText = "Erro ao cadastrar!";
+            info.style.color = "red";
+        });
+
+    } else {
+        document.querySelectorAll(".info-cadastro").forEach(info => {
+            info.innerText = "";
+        });
+    }
 });
 
-// CPF MASK
+// CPF/TELEFONE MASK
 $(document).ready(function(){
 	$('.mask-cpf').inputmask('999.999.999-99', { "placeholder": "___.___.___-__" });
 });
