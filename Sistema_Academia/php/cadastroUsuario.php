@@ -27,15 +27,26 @@ function cadastrarAluno($conn){
     $telefone = $_POST['telefone'];
     $endereco = $_POST['endereco'];
 
-    // SQL QUERY
-    $sql = "INSERT INTO tb_alunos(Nome, Email, Senha, CPF, Data_Nascimento, Idade, Telefone, Endereco)
-            VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$data_nascimento', $idade, '$telefone', '$endereco')";
+    // Query CPF
+    $selectCPF = $conn->query("SELECT * FROM tb_alunos WHERE CPF = '$cpf'");
 
-    // Verifica se a QUERY está certa
-    if ($conn->query($sql)){
-        $_SESSION['cadastro_status'] = "aaaaaaaa";
+    // Verificia se o CPF já existe
+    if ($selectCPF->num_rows > 0) {
+        $_SESSION['cpf_cadastrado'] = 'true';
+
     } else {
-        $_SESSION['cadastro_status'] = "bbbbbb";
+        // Query Cadastro Aluno
+        $sql = $conn->query(
+            "INSERT INTO tb_alunos(Nome, Email, Senha, CPF, Data_Nascimento, Idade, Telefone, Endereco)
+             VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$data_nascimento', $idade, '$telefone', '$endereco')");
+        
+        // Verificia se cadastrou
+        if ($sql){
+            $_SESSION['cadastro_status'] = 'sucess';
+        } else {
+            $_SESSION['cadastro_status'] = 'error';
+        }
+        $_SESSION['cpf_cadastrado'] = 'false';
     }
 }
 
@@ -56,21 +67,31 @@ function cadastrarFuncionario($conn){
     $salario = $_POST['salario'];
     $cargo = $_POST['cargo'];
 
-    // SQL QUERY
-    $sql = "INSERT INTO tb_funcionarios(Nome, Email, Senha, CPF, RGM, Data_Nascimento, Idade, Telefone, Endereco, Salario, Cargo)
-            VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$rgm', '$data_nascimento', $idade, '$telefone', '$endereco', $salario, '$cargo')";
+    // Query CPF
+    $selectCPF = $conn->query("SELECT * FROM tb_funcionarios WHERE CPF = '$cpf'");
 
-    // Verifica se a QUERY está certa
-    if ($conn->query($sql)){
-        $_SESSION['cadastro_status'] = true;
+    // Verificia se o CPF já existe
+    if ($selectCPF->num_rows > 0) {
+        $_SESSION['cpf_cadastrado'] = 'true';
+
     } else {
-        $_SESSION['cadastro_status'] = false;
+        // Query Cadastro Funionário
+        $sql = $conn->query(
+            "INSERT INTO tb_funcionarios (Nome, Email, Senha, CPF, RGM, Data_Nascimento, Idade, Telefone, Endereco, Salario, Cargo)
+            VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$rgm', '$data_nascimento', $idade, '$telefone', '$endereco', $salario, '$cargo')");
+        
+        // Verificia se cadastrou
+        if ($sql){
+            $_SESSION['cadastro_status'] = 'sucess';
+        } else {
+            $_SESSION['cadastro_status'] = 'error';
+        }
+        $_SESSION['cpf_cadastrado'] = 'false';
     }
 }
 
 // Fecha conexão
 $conn->close();
-
-// Volta para a página
-header('Location: ../pages/listaUsuarios.php');
+// Volta pra página
+header('Location: ../pages/listaUsuarios.php?status=' . $_SESSION['cadastro_status'] . '&cpf_cadastrado=' . $_SESSION['cpf_cadastrado']);
 exit;
