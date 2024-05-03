@@ -93,5 +93,5 @@ function cadastrarFuncionario($conn){
 // Fecha conexão
 $conn->close();
 // Volta pra página
-header('Location: ../pages/listaUsuarios.php?status=' . $_SESSION['cadastro_status'] . '&cpf_cadastrado=' . $_SESSION['cpf_cadastrado']);
+header('Location: ../pages/cadastro.php?status=' . $_SESSION['cadastro_status'] . '&cpf_cadastrado=' . $_SESSION['cpf_cadastrado']);
 exit;

@@ -2,7 +2,7 @@
 
 body {
     overflow: hidden;
-    background-color: var(--preto-padrao);
+    background-color: var(--cor-primaria);
 }
 
 .sideBar {
