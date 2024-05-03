@@ -1,7 +1,12 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
-const botoesCadastro = document.querySelectorAll('.botao-cadastro');
+
+// Função para obter parâmetros da URL
+function obterParametroURL(nomeParametro) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.has(nomeParametro) ? urlParams.get(nomeParametro) : null;
+}
 
 signUpButton.addEventListener('click', () => {
 	container.classList.add("right-panel-active");
@@ -17,12 +22,6 @@ signInButton.addEventListener('click', () => {
 	});
 });
 
-// Função para obter parâmetros da URL
-function obterParametroURL(nomeParametro) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.has(nomeParametro) ? urlParams.get(nomeParametro) : null;
-}
-
 // Verifica o status do cadastro assim que a página é carregada
 document.addEventListener('DOMContentLoaded', function() {
     // Obter parâmetro 'status' da URL
@@ -30,14 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var cpfCadastro = obterParametroURL('cpf_cadastrado');
 
     // Exibir mensagem com base no status do cadastro
-    if (cadastroStatus === 'sucess') {
+    if (cadastroStatus === 'sucess' && cpfCadastro === 'false') {
         document.querySelectorAll(".info-cadastro").forEach(info => {
             info.innerText = "Cadastrado!";
             info.style.color = "green";
         });
     
     // CPF cadastrado
-    } else if (cadastroStatus === 'error' && cpfCadastro === 'true'){
+    } else if (cpfCadastro === 'true'){
         document.querySelectorAll(".info-cadastro").forEach(info => {
             info.innerText = "CPF já cadastrado!";
             info.style.color = "red";

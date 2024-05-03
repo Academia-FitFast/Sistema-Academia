@@ -10,7 +10,10 @@ document.getElementById('login-form').addEventListener('submit', function (event
         window.location.href = 'index.html';
     } else {
         // Se estiverem incorretos, mostre uma mensagem de erro
-        alert('Email ou senha incorretos!');
+        const erroLogin = document.getElementById('erro-login');
+        erroLogin.style.display = 'block';
+        erroLogin.innerText = 'Email ou Senha incorreto!';
+        erroLogin.style.color = 'red';
     }
 });
 
