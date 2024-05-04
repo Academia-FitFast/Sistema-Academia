@@ -2,12 +2,16 @@
 @import url("index.css");
 @import url("cadastroUsuarios.css");
 @import url("login.css");
+@import url("listaAlunos.css");
+@import url("iframeListaAlunos.css");
+@import url("iframeLista.css");
+@import url("iframeMudarCadastro.css");
 
 :root{
     --cor-primaria:#dadada;
     --cor-secundaria:#0b3cdd;
     --font-color: #ffffff;
-    --preto-padrao:#7a7a7a;
+    --preto-padrao:#f6f5f7;
 }
 
 body{
