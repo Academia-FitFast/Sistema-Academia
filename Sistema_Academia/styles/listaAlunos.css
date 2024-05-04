@@ -37,24 +37,3 @@ body{
 
     display: none;
 }
-
-/* Estilos CSS para a tabela */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    border: 1px solid var(--preto-padrao);
-    padding: 8px;
-    text-align: center;
-    color: var(--font-color);
-}
-th {
-    background-color: var(--cor-secundaria);
-}
-td {
-    color: black;
-}
-tr {
-    background-color: #c7ebff;
-}
