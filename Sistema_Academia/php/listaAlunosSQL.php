@@ -1,5 +1,7 @@
 <?php
-require 'connectionSQL.php';
+require_once 'connectionSQL.php';
+
+$conn = (new connectionDB())->conectaDB();
 
 // Consulta SQL para obter os alunos
 $sql = "SELECT tb_alunos.*, tb_assinatura.Plano

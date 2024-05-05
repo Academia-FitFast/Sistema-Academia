@@ -1,6 +1,8 @@
 <?php
 require 'connectionSQL.php';
 
+$conn = (new connectionDB())->conectaDB();
+
 // Obtém a URL atual
 $url = $_SERVER['REQUEST_URI'];
 

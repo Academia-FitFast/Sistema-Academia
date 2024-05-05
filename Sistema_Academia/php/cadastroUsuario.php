@@ -1,5 +1,8 @@
 <?php
-require 'connectionSQL.php';
+require_once 'connectionSQL.php';
+
+// Conexão com banco de dados
+$conn = (new connectionDB())->conectaDB();
 
 // Início sessão
 session_start();
