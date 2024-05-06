@@ -33,6 +33,32 @@ class ConsultaDB {
         }
     }
 
+    public function getCondicaoEquipByURL(){
+        // Obtém a URL atual
+        $url = $_SERVER['REQUEST_URI'];
+        
+        // Analisa a URL para obter os componentes
+        $parts = parse_url($url);
+        
+        // Obtém os parâmetros da query string, se houver
+        $queryParams = [];
+        if (isset($parts['query'])) {
+            parse_str($parts['query'], $queryParams);
+        }
+
+        // Verifica se existe um parâmetro 'id' na query string
+        if (isset($queryParams['condicao'])) {
+            $condicao = $queryParams['condicao'];
+
+            // Escapa o ID para evitar injeção de SQL
+            $escaped_condicao = $this->conn->real_escape_string($condicao);
+
+            return $escaped_condicao;
+        } else {
+            echo "A URL não contém um parâmetro 'condicao'.";
+        }
+    }
+
     function getAssinaturasDB(){
         $result = $this->conn->query("SELECT *
                                 FROM tb_assinatura");
@@ -41,7 +67,7 @@ class ConsultaDB {
         if ($result->num_rows > 0){
             // Se houver pelo menos uma linha de resultado
             while($row = $result->fetch_assoc()) {
-                $planos[] = $row['Plano'];
+                $planos[$row['ID_ASSINATURA_PK']] = $row['Plano'];
             }
         } else {
             echo "Planos não encontrados!";
@@ -71,6 +97,7 @@ class ConsultaAluno {
             // Se houver pelo menos uma linha de resultado
             $row = $result->fetch_assoc();
             // Armazena os dados do aluno na matriz $dados
+            $dados['ID'] = $row['ID_usuarios_pk'];
             $dados['Nome'] = $row['Nome'];
             $dados['Email'] = $row['Email'];
             $dados['Senha'] = $row['Senha'];

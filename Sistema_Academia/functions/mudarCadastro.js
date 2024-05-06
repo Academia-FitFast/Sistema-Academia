@@ -8,18 +8,19 @@ function obterParametroURL(nomeParametro) {
 document.addEventListener('DOMContentLoaded', function() {
     // Obter parâmetro 'status' da URL
     var atualizarCadastro = obterParametroURL('error');
+    var id = obterParametroURL('id');
 
     // Exibir mensagem com base no status do cadastro
     if (atualizarCadastro === 'false') {
         document.querySelectorAll(".info-cadastro").forEach(info => {
-            info.innerText = "Cadastrado!";
+            info.innerText = "Cadastro Atualizado!";
             info.style.color = "green";
         });
     
     // CPF cadastrado
     } else if (atualizarCadastro === 'true'){
         document.querySelectorAll(".info-cadastro").forEach(info => {
-            info.innerText = "CPF já cadastrado!";
+            info.innerText = "Cadastro não atualizado!";
             info.style.color = "red";
         });
 

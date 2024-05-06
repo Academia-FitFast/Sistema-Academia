@@ -5,7 +5,7 @@ require_once 'classQuerySQL.php';
 session_start();
 
 $conn = (new connectionDB())->conectaDB();
-$id = (new ConsultaDB($conn))->getIdByURL();
+$id = $_POST['ID'];
 
 // Verifica se o formulário foi enviado
 if(!empty($_POST)){
@@ -20,8 +20,8 @@ function atualizarCadastroAluno($conn, $id){
     $camposAtualizar = array();
     // Itera sobre os dados do formulário
     foreach($_POST as $campo => $valor){
-        // Verifica se o valor não está vazio
-        if (!empty($valor)){
+        // Verifica se o valor não está vazio e se o campo não é 'form-type'
+        if (!empty($valor) && $campo !== 'form-type' && $campo !== 'ID'){
             // Adiciona o campo e o valor ao array de campos a serem atualizados
             $camposAtualizar[$campo] = $valor;
         }
@@ -41,12 +41,13 @@ function atualizarCadastroAluno($conn, $id){
         $sql .= " WHERE ID_usuarios_pk = $id";
 
         // Execute a query SQL
-        if ($conn->query($sql) === TRUE) {
+        if ($conn->query($sql)) {
             $_SESSION['error'] = 'false';
             echo "aaaaaaaaa";
         } else {
             $_SESSION['error'] = 'true';
             echo "bbbbbb";
+            echo $sql;
         }
     } else {
         $_SESSION['error'] = 'true';

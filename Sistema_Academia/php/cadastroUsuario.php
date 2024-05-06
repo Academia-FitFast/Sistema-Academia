@@ -24,8 +24,9 @@ function cadastrarAluno($conn){
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];
     $data_nascimento = $_POST['data-nascimento'];
+    $data_nascimento_obj = new DateTime($data_nascimento);
     $dataAtual = new DateTime();
-    $idade = $data_nascimento->diff($dataAtual);
+    $idade = $data_nascimento_obj->diff($dataAtual)->y;
     // Gera senha com base na data de nascimento
     $senha_inicial = date('dmY', strtotime($data_nascimento));
     $telefone = $_POST['telefone'];
@@ -41,8 +42,8 @@ function cadastrarAluno($conn){
     } else {
         // Query Cadastro Aluno
         $sql = $conn->query(
-            "INSERT INTO tb_alunos(Nome, Email, Senha, CPF, Data_Nascimento, Idade, Telefone, Endereco)
-             VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$data_nascimento', $idade->y, '$telefone', '$endereco')");
+            "INSERT INTO tb_alunos(Nome, Email, Senha, CPF, Data_Nascimento, Idade, Telefone, Endereco, Plano_Adesao)
+             VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$data_nascimento', $idade, '$telefone', '$endereco', '4')");
         
         // Verificia se cadastrou
         if ($sql){
@@ -62,9 +63,11 @@ function cadastrarFuncionario($conn){
     $cpf = $_POST['cpf'];
     // RGM de 8 digitos aleatório
     $rgm = rand(10000000, 99999999);
+    // Data de nascimento e idade
     $data_nascimento = $_POST['data-nascimento'];
+    $data_nascimento_obj = new DateTime($data_nascimento);
     $dataAtual = new DateTime();
-    $idade = $data_nascimento->diff($dataAtual);
+    $idade = $data_nascimento_obj->diff($dataAtual)->y;
     // Gera senha com base na data de nascimento
     $senha_inicial = date('dmY', strtotime($data_nascimento));
     $telefone = $_POST['telefone'];
@@ -83,7 +86,7 @@ function cadastrarFuncionario($conn){
         // Query Cadastro Funionário
         $sql = $conn->query(
             "INSERT INTO tb_funcionarios (Nome, Email, Senha, CPF, RGM, Data_Nascimento, Idade, Telefone, Endereco, Salario, Cargo)
-            VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$rgm', '$data_nascimento', $idade->y, '$telefone', '$endereco', $salario, '$cargo')");
+            VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$rgm', '$data_nascimento', $idade, '$telefone', '$endereco', $salario, '$cargo')");
         
         // Verificia se cadastrou
         if ($sql){
