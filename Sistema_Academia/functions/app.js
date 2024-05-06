@@ -7,6 +7,6 @@ function trocarFinanceiro() {
 }
 
 function trocarMaquinas() {
-    document.getElementById("telaPrincipal").src="maquinas.html";
+    document.getElementById("telaPrincipal").src="../pages/maquinas.php";
 }
 

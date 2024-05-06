@@ -1,18 +1,27 @@
 <?php
 
-// nome do server
-$servername = "localhost";
-// nome do usuário
-$username = "root";
-// senha do server
-$password = "";
-// nome do banco de dados
-$database = "banco_teste";
+class connectionDB {
+    // nome do server
+    private $servername = "localhost";
+    // nome do usuário
+    private $username = "root";
+    // senha do server
+    private $password = "";
+    // nome do banco de dados
+    private $database = "banco_teste";
+    private $conn;
 
-// Faz a conexão com o MySQL
-$conn = new mysqli($servername, $username, $password, $database);
+    public function __construct(){
+        // Faz a conexão com o MySQL
+        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->database);
 
-// Verifica se a conexão foi feita
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-};
+        // Verifica se a conexão foi feita
+        if ($this->conn->connect_error) {
+            die("Conexão falhou: " . $this->conn->connect_error);
+        }
+    }
+
+    public function conectaDB(){
+        return $this->conn;
+    }
+}
