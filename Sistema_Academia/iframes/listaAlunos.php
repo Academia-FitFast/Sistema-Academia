@@ -10,8 +10,8 @@
 </head>
 <body>
     <table id="tabelaAlunos" class="tabela">
-        <thead>
-            <tr class="cabecalho">
+        <tr class="cabecalho">
+            <thead>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Idade</th>
@@ -20,11 +20,11 @@
                 <th>Assinatura</th>
                 <th>Editar</th>
                 <th>Deletar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php require '../php/listaAlunosSQL.php';?>
-        </tbody>
+            </thead>
+            <tbody>
+                <?php require '../php/listaAlunosSQL.php';?>
+            </tbody>
+        </tr>
     </table>
 
     <script src="../functions/listaAlunos.js"></script>
