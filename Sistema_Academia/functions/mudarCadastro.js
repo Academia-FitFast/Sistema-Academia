@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
             info.style.color = "red";
         });
 
+    } else if (atualizarCadastro === 'nothing'){
+        document.querySelectorAll(".info-cadastro").forEach(info => {
+            info.innerText = "Nada para atualizar!";
+            info.style.color = "#F6BE00";
+        });
+
     } else {
         document.querySelectorAll(".info-cadastro").forEach(info => {
             info.innerText = "";

@@ -115,6 +115,37 @@ class ConsultaAluno {
         }
         return $dados;
     }
+
+    public function getDadosFuncionario($id){
+        $result = $this->conn->query("SELECT tb_funcionarios.*
+                                FROM tb_funcionarios
+                                WHERE ID_funcionarios_pk = '$id'");
+
+        // Array com dados
+        $dados = array();
+        if ($result->num_rows > 0) {
+            // Se houver pelo menos uma linha de resultado
+            $row = $result->fetch_assoc();
+            // Armazena os dados do aluno na matriz $dados
+            $dados['ID'] = $row['ID_funcionarios_pk'];
+            $dados['Nome'] = $row['Nome'];
+            $dados['Email'] = $row['Email'];
+            $dados['Senha'] = $row['Senha'];
+            $dados['CPF'] = $row['CPF'];
+            $dados['Data-Nascimento'] = $row['Data_Nascimento'];
+            $dados['Idade'] = $row['Idade'];
+            $dados['Telefone'] = $row['Telefone'];
+            $dados['Endereco'] = $row['Endereco'];
+            $dados['Salario'] = $row['Salario'];
+            $dados['Cargo'] = $row['Cargo'];
+            // Adicione outros campos conforme necessário
+        } else {
+            // Se não houver resultados, define $dados como nulo ou retorna uma mensagem de erro
+            $dados = null;
+            echo "Dados não encontrados!";
+        }
+        return $dados;
+    }
 }
 
 class ConsultaFuncionario {
