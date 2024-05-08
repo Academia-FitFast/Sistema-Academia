@@ -21,12 +21,6 @@
         // Use os dados para preencher os campos do formulário
     }
 
-    // Verifique se os parâmetros de consulta são diferentes
-    if ($_SESSION['error'] === false || $_SESSION['id'] === false) {
-        // Redirecione de volta para a mesma página com parâmetros de consulta
-        header("Location: ../pages/mudarCadastroAluno.php");
-        exit();
-    }
 
 ?>
 
