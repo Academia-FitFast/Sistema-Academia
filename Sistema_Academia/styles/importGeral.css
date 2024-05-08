@@ -5,7 +5,6 @@
 @import url("listaAlunos.css");
 @import url("iframeListaAlunos.css");
 @import url("iframeLista.css");
-@import url("iframeMudarCadastro.css");
 
 :root{
     --cor-primaria:#dadada;

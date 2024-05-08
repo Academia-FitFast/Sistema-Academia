@@ -85,10 +85,11 @@ function cadastrarFuncionario($conn){
     } else {
         // Query Cadastro Funionário
         $sql = $conn->query(
-            "INSERT INTO tb_funcionarios (Nome, Email, Senha, CPF, RGM, Data_Nascimento, Idade, Telefone, Endereco, Salario, Cargo)
+            "INSERT INTO `tb_funcionarios` (`Nome`, `Email`, `Senha`, `CPF`, `RGM`, `Data_Nascimento`, `Idade`, `Telefone`, `Endereco`, `Salario`, `Cargo`)
             VALUES ('$nome', '$email', '$senha_inicial', '$cpf', '$rgm', '$data_nascimento', $idade, '$telefone', '$endereco', $salario, '$cargo')");
         
         // Verificia se cadastrou
+        var_dump($sql);
         if ($sql){
             $_SESSION['cadastro_status'] = 'sucess';
         } else {

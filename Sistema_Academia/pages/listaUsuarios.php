@@ -50,7 +50,7 @@
         </button>
     </nav>
 
-    <iframe class="show" id="IframeListaUsuarios" src="../iframes/listaFuncionarios.php" frameborder="0"></iframe>
+    <iframe class="show" id="IframeListaUsuarios" src="../iframes/listaAlunos.php" frameborder="0"></iframe>
 
     <script src="../functions/listaUsuarios.js"></script>
     </body>
