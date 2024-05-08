@@ -7,20 +7,6 @@
     $conn = (new connectionDB())->conectaDB();
     $id = (new ConsultaDB($conn))->getIdByURL();
     $dadosFuncionario = (new ConsultaAluno($conn))->getDadosFuncionario($id);
-    
-
-    if (!empty($_SESSION['dadosFuncionario'])) {
-        $_SESSION['dadosFuncionario'] = (new ConsultaAluno($conn))->getDadosFuncionario($id);
-        // Use os dados para preencher os campos do formulário
-    }
-
-    // Verifique se os parâmetros de consulta são diferentes
-    if ($_SESSION['error'] === false || $_SESSION['id'] === false) {
-        // Redirecione de volta para a mesma página com parâmetros de consulta
-        header("Location: ../pages/mudarCadastroFuncionario.php");
-        exit();
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +48,10 @@
                 <input type="text" name="Endereco" placeholder="<?php echo $dadosFuncionario['Endereco'];?>"><br>
 
                 <p class="paragrafo">Salario:</p>
-                <input type="text" name="Endereco" placeholder="<?php echo $dadosFuncionario['Salario'];?>"><br>
+                <input class="salario" type="text" name="Salario" placeholder="R$ <?php echo number_format($dadosFuncionario['Salario'], 2, ',', '.');?>"><br>
 
                 <p class="paragrafo">Cargo:</p>
-                <input type="text" name="Endereco" placeholder="<?php echo $dadosFuncionario['Cargo'];?>"><br>
+                <input type="text" name="Cargo" placeholder="<?php echo $dadosFuncionario['Cargo'];?>"><br>
                 <br>
                 <input type="hidden" name="form-type" value="funcionario">
                 <button class="botao-cadastro" type="submit">Atualizar Cadastro</button>

@@ -1,13 +1,3 @@
-<?php
-    session_start();
-    // Verifica se houve um erro de cadastro
-    if ($_SESSION['cadastro_status'] === false) {
-        // Redireciona de volta para a página sem o parâmetro de erro
-        header('Location: ../iframes/cadastro.php');
-        exit; // Termina o script para evitar o loop de redirecionamento
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
