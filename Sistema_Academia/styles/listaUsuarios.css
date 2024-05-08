@@ -7,8 +7,6 @@
     --preto-padrao:#f6f5f7;
 }
 
-
-
 .navDir{
     width: 50px;
     height: 100px;
@@ -35,3 +33,4 @@
 #TrocarListaAlunos{
     display: none;
 }
+

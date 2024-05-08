@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
                     <div class="idade">'. $row["Idade"] .' anos</div>
                     <div class="telefone">'. $row["Telefone"] .'</div>
                     <div class="endereco">'. $row["Endereco"] .'</div>
-                    <div class="salario">'. $row["Salario"] .'</div>
+                    <div class="salario">R$ '. number_format($row['Salario'], 2, ',', '.') .'</div>
                     <div class="editar">
                         <svg style="cursor: pointer;" class="mudarFuncionario" data-id="'. $row["ID_funcionarios_pk"] .'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue"
                         class="bi bi-pencil-square" viewBox="0 0 16 16">

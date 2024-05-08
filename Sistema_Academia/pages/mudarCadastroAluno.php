@@ -15,13 +15,6 @@
             echo '<option value="'. $id .'">'. $plano .'</option>';
         }
     }
-
-    if (!empty($_SESSION['dadosAluno'])) {
-        $_SESSION['dadosAluno'] = (new ConsultaAluno($conn))->getDadosAluno($id);
-        // Use os dados para preencher os campos do formulário
-    }
-
-
 ?>
 
 <!DOCTYPE html>

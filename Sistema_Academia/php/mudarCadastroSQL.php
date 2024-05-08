@@ -5,13 +5,15 @@ require_once 'classQuerySQL.php';
 session_start();
 
 $conn = (new connectionDB())->conectaDB();
-$id = $_POST['ID'];
 
 // Verifica se o formulário foi enviado
 if(!empty($_POST)){
+    $id = $_POST['ID'];
     if ($_POST['form-type'] === 'aluno') {
+        sleep(2);
         atualizarCadastroAluno($conn, $id);
     } elseif ($_POST['form-type'] === 'funcionario') {
+        sleep(2);
         atualizarCadastroFuncionario($conn, $id);
     }
 }
